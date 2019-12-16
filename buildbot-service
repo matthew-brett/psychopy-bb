@@ -1,0 +1,66 @@
+#!/bin/sh
+# Save as /etc/init.d/buildbot
+# Enable with: chkconfig --add buildbot
+#
+# chkconfig: 345 95 15
+# description: Starts and stops a buildbot master
+
+PROJECT="psychopy"
+BB_USER="bb"
+BB_HOME="/home/${BB_USER}"
+BASE_DIR="${BB_HOME}/repos/psychopy-bb/master"
+BUILDBOT="${BB_HOME}/.local/bin/buildbot"
+
+# Check that master.cfg exists.
+[ -f "${BASE_DIR}/master.cfg" ] || exit $?
+
+RETVAL=0
+
+start() {
+	printf "Starting buildbot master for %s\n" "$PROJECT"
+        ACTION=start
+        /bin/su $BB_USER -c "$BUILDBOT $ACTION $BASE_DIR"
+	RETVAL=$?
+	return $RETVAL
+}
+
+stop() {
+	printf "Stopping buildbot master for %s\n" "$PROJECT"
+        ACTION=stop
+        /bin/su $BB_USER -c "$BUILDBOT $ACTION $BASE_DIR"
+	RETVAL=$?
+	return $RETVAL
+}
+
+restart() {
+        stop
+        start
+}	
+
+reload() {
+        printf "Reconfiguring build master for %s\n" "$PROJECT"
+        ACTION=reconfig
+        /bin/su $BB_USER -c "$BUILDBOT $ACTION $BASE_DIR"
+	RETVAL=$?
+	return $RETVAL
+}	
+
+case "$1" in
+  start)
+  	start
+	;;
+  stop)
+  	stop
+	;;
+  restart)
+  	restart
+	;;
+  reload)
+  	reload
+	;;
+  *)
+	echo $"Usage: $0 {start|stop|restart|reload}"
+	exit 1
+esac
+
+exit $?
