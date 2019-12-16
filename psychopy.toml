@@ -1,0 +1,5 @@
+# Configuration for local server, for testing.
+
+buildbotURL = "https://buildbot.psychopy.org/"
+web_port = 8010
+worker_port = 8181

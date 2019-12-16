@@ -1,0 +1,10 @@
+# Define authorization and worker groups
+
+[auth_groups]
+[auth_groups.admins]
+Matthew = "pass"
+Alice = "Password1"
+
+[worker_groups]
+[worker_groups.basic]
+example-worker = "pass"

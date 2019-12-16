@@ -1,0 +1,5 @@
+# Configuration for local server, for testing.
+
+buildbotURL = "http://localhost:8010/"
+web_port = 8010
+worker_port = 8181
