@@ -8,9 +8,13 @@ psychopy:
 	ln -sf ${PWD}/psychopy_private.toml master/private_config.toml
 	buildbot restart master
 
-bb-reconfig:
+reconfig: bb-reconfig
 
-bb-restart:
+restart: bb-restart
+
+restart: bb-stop
+
+start: bb-start
 
 bb-%:
 	buildbot $* master
