@@ -12,7 +12,7 @@ reconfig: bb-reconfig
 
 restart: bb-restart
 
-restart: bb-stop
+stop: bb-stop
 
 start: bb-start
 
