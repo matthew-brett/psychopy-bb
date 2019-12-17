@@ -1,2 +1,4 @@
 master/
 *_private.toml
+*.swp
+*~
