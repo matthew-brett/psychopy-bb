@@ -4,5 +4,5 @@
 virtualenv bb-worker
 . bb-worker/bin/activate
 pip install buildbot-worker
-buildbot-worker create-worker worker localhost:8181 example-worker pass
+buildbot-worker create-worker worker localhost example-worker pass
 buildbot-worker start worker

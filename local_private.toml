@@ -1,10 +1,23 @@
-# Define authorization and worker groups
+# Configuration for local server, for testing.
+
+buildbotURL = "http://localhost:8010/"
+web_port = 8010
+worker_port = 9989
 
 [auth_groups]
 [auth_groups.admins]
 Matthew = "pass"
 Alice = "Password1"
 
-[worker_groups]
-[worker_groups.basic]
+[workers]
 example-worker = "pass"
+linux-worker = "pass"
+
+[worker-groups]
+[worker-groups.macos]
+workers = ["example-worker"]
+os = "macos"
+
+[worker-groups.linux]
+workers = ['linux-worker']
+os = "linux"

@@ -1,10 +1,8 @@
 local:
-	ln -sf ${PWD}/local.toml master/config.toml
 	ln -sf ${PWD}/local_private.toml master/private_config.toml
 	buildbot restart master
 
 psychopy:
-	ln -sf ${PWD}/psychopy.toml master/config.toml
 	ln -sf ${PWD}/psychopy_private.toml master/private_config.toml
 	buildbot restart master
 
