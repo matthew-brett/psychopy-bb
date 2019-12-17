@@ -140,17 +140,20 @@ In this case on Debian / Ubuntu:
 WORKER_USER=buildworker
 WORKER_NAME=my_worker
 WORKER_PASSWORD=some-password-not-this-one
+WORKER_PORT=8181
 
 sudo useradd -m $WORKER_USER
 sudo passwd $WORKER_USER
 # You'll need python and git and nosetests on the path
 sudo apt-get install git python-dev python-numpy python-nose python-setuptools
-# Tests need virtualenv, it's easiest to install this system-wide
-pip install virtualenv
+# Tests need virtualenv.  Install as user.
 su - $WORKER_USER
-pip install --user buildbot-worker
+# Edit .bashrc to add $HOME/.local/bin to the PATH, e.g.
+# export PATH=$HOME/.local/bin:$PATH
+pip3 install --user virtualenv
+pip3 install --user buildbot-worker
 # Create build worker
-$HOME/.local/bin/buildbot-worker create-worker $HOME/$WORKER_NAME buildbot.psychopy.org $WORKER_NAME $WORKER_PASSWORD
+$HOME/.local/bin/buildbot-worker create-worker $HOME/$WORKER_NAME buildbot.psychopy.org:$WORKER_PORT $WORKER_NAME $WORKER_PASSWORD
 # At this point you may want to edit the `admin` and `host` files in $HOME/$WORKER_NAME/info
 # Start up build worker
 $HOME/.local/bin/buildbot-worker start $HOME/$WORKER_NAME
