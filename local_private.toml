@@ -4,6 +4,11 @@ buildbotURL = "http://localhost:8010/"
 web_port = 8010
 worker_port = 9989
 
+# From https://github.com/settings/tokens
+# Personal token with full repo permissions, nothing else.
+# This token is fake, obviously.
+# githubAPIToken = "01234567890abcdef01234567890abcdef012345"
+
 [auth_groups]
 [auth_groups.admins]
 Matthew = "pass"

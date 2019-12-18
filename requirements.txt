@@ -1,3 +1,5 @@
 # Pip requirements file
 buildbot[bundle]
 toml
+# For Github integration
+txrequests
